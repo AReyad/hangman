@@ -20,6 +20,6 @@ class Computer
 
   def generate_random_word
     random = rand(filter_dictionary.length)
-    filter_dictionary[random]
+    filter_dictionary[random].chomp
   end
 end
