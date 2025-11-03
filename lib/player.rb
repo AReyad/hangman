@@ -8,7 +8,7 @@ class Player
   def guess
     user_input = gets.chomp
     if valid_guess?(user_input)
-      user_input
+      user_input.downcase
     else
       puts 'Invalid guess, your guess should consist of one letter of the English Alphabet.'
     end
