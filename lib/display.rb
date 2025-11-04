@@ -9,11 +9,8 @@ class Display
     end
 
     def reveal_match(word, input)
-      @displayed_word = hide_word(word) unless @revealed
+      @displayed_word ||= hide_word(word)
       return unless word.include?(input)
-
-      # Prevent displayed_word from resetting when the function is called
-      @revealed = true
 
       word.each_char.with_index do |char, index|
         displayed_word[index] = char if word[index] == input
@@ -21,6 +18,6 @@ class Display
       displayed_word
     end
 
-    attr_reader :displayed_word
+    attr_accessor :displayed_word
   end
 end
