@@ -9,7 +9,7 @@ class Computer
   end
 
   def filter_dictionary
-    dictionary = File.open('dictionary.txt', 'r')
+    dictionary = File.open('./dictionary.txt', 'r')
 
     filtered_dictionary = dictionary.select do |word|
       word if word.chomp.length.between?(MIN_WORD_LENGTH, MAX_WORD_LENGTH)
