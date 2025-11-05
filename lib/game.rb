@@ -13,6 +13,8 @@ class Game
   end
 
   def run
+    Display.starter
+    puts ''
     game_load if File.exist?('./saves/save.yaml')
     puts "Word: #{Display.hide_word(word)}" unless @displayed
     play
@@ -55,7 +57,7 @@ class Game
 
   def save
     Dir.mkdir('saves') unless Dir.exist?('./saves')
-    File.new('./saves/save.yaml', 'w+')
+    File.new('./saves/save.yaml', 'w+') unless File.exist?('./saves/save.yaml')
     File.write('./saves/save.yaml', serialize, mode: 'w')
     puts 'Saved'
   end
