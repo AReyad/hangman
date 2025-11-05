@@ -12,6 +12,7 @@ class Game
 
   def run
     game_load if File.exist?('./saves/save.yaml')
+    puts "Word: #{Display.hide_word(word)}" unless @displayed
     play
     end_message
   end
@@ -26,7 +27,7 @@ class Game
       self.lives -= 1 if incorrect_guess?(player_guess)
       Display.reveal_match(word, player_guess)
       display_round
-      save if accept_save
+      confirm_save_exit
     end
   end
 
@@ -57,14 +58,15 @@ class Game
     puts 'Saved'
   end
 
-  def accept_save
+  def confirm_save_exit
     return if game_over?
 
-    puts 'Do you want to save? Y/N'
+    puts 'Do you want to save and exit? Yes/No'
     user_input = gets.chomp.downcase
-    return unless user_input == 'y'
+    return unless user_input == 'yes'
 
-    true
+    save
+    exit
   end
 
   def game_load
@@ -76,15 +78,12 @@ class Game
     saved.unserialize(File.read('./saves/save.yaml'))
     @word = saved.word
     @lives = saved.lives
-    self.displayed = saved.displayed
+    @displayed = saved.displayed
     Display.displayed_word = displayed
     display_round
   end
 
   protected
 
-  attr_reader :player, :computer
   attr_accessor :lives, :displayed, :word
 end
-
-Game.new.run
