@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Computer
   attr_reader :word
 

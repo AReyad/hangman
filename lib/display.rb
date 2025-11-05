@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Display
   class << self
     def hide_word(word)
