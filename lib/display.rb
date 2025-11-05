@@ -20,6 +20,13 @@ class Display
       displayed_word
     end
 
+    def starter
+      puts 'Welcome to Hangman'
+      puts 'Your goal is to break the word by guessing a letter at a time.'
+      puts 'Your lives decrements only when you guess a wrong letter.'
+      puts 'You have 6 lives so be careful not to waste them.'
+    end
+
     attr_accessor :displayed_word
   end
 end
