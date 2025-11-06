@@ -18,9 +18,10 @@ class Display
 
     def starter
       puts 'Welcome to Hangman'
-      puts 'Your goal is to break the word by guessing a letter at a time.'
-      puts 'Your lives decrements only when you guess a wrong letter.'
-      puts 'You have 6 lives so be careful not to waste them.'
+      puts '- Your goal is to break the word by guessing a letter at a time.'
+      puts '- Your lives decrement only when you guess a wrong letter.'
+      puts "- You have 6 lives so be careful not to waste them.\n\n"
+      puts 'NOTE! You can save the game by typing "save" instead of guessing.'
     end
 
     attr_accessor :displayed_word

@@ -24,14 +24,14 @@ class Game
   def play
     player = Player.new('s')
     until game_over?
-      print 'Enter your guess: '
+      print 'Enter your guess or save the game: '
       player_guess = player.guess
       next unless player_guess
 
+      confirm_save_exit(player_guess)
       self.lives -= 1 if incorrect_guess?(player_guess)
       Display.reveal_match(word, player_guess)
       display_round
-      confirm_save_exit
     end
   end
 
@@ -39,6 +39,7 @@ class Game
     puts "Lives left: #{lives}"
     puts "Word: #{Display.displayed_word}"
     self.displayed = Display.displayed_word
+    puts '===x==='
   end
 
   def incorrect_guess?(input)
@@ -59,15 +60,13 @@ class Game
     Dir.mkdir('saves') unless Dir.exist?('./saves')
     File.new('./saves/save.yaml', 'w+') unless File.exist?('./saves/save.yaml')
     File.write('./saves/save.yaml', serialize, mode: 'w')
-    puts 'Saved'
+    puts 'Game saved succesfully.'
   end
 
-  def confirm_save_exit
+  def confirm_save_exit(input)
     return if game_over?
 
-    puts 'Do you want to save and exit? Yes/No'
-    user_input = gets.chomp.downcase
-    return unless user_input == 'yes'
+    return unless input == 'save'
 
     save
     exit
@@ -79,7 +78,6 @@ class Game
     return unless user_input == 'y'
 
     unserialize(File.read('./saves/save.yaml'))
-    Display.displayed_word = displayed
     display_round
   end
 

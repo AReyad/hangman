@@ -17,6 +17,6 @@ class Player
   end
 
   def valid_guess?(input)
-    input.match?(/\A[a-zA-Z'-]*\z/) && input.length == 1
+    input == 'save' || input.match?(/\A[a-zA-Z'-]*\z/) && input.length == 1
   end
 end
