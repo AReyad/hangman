@@ -12,7 +12,7 @@ class Player
     if valid_guess?(user_input)
       user_input.downcase
     else
-      puts 'Invalid guess, your guess should consist of one letter of the English Alphabet, or "save" to save the game.'
+      puts 'Invalid input, your input should consist of one letter of the English Alphabet, or "save" to save the game.'
     end
   end
 
