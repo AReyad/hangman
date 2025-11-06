@@ -37,8 +37,8 @@ class Game
 
   def display_round
     puts "Lives left: #{lives}"
-    puts "Word: #{Display.displayed_word}"
     self.displayed = Display.displayed_word
+    puts "Word: #{displayed}" if @displayed
     puts '===x==='
   end
 
