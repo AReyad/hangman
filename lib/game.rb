@@ -78,11 +78,7 @@ class Game
     user_input = gets.chomp.downcase
     return unless user_input == 'y'
 
-    saved = Game.new
-    saved.unserialize(File.read('./saves/save.yaml'))
-    @word = saved.word
-    @lives = saved.lives
-    @displayed = saved.displayed
+    unserialize(File.read('./saves/save.yaml'))
     Display.displayed_word = displayed
     display_round
   end
