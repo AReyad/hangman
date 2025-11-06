@@ -3,11 +3,7 @@
 class Display
   class << self
     def hide_word(word)
-      string = ''
-      word.length.times do
-        string += '_'
-      end
-      string
+      '_' * word.length
     end
 
     def reveal_match(word, input)
